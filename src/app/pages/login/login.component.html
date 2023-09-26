@@ -1,0 +1,39 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col">
+            <form [formGroup]="loginForm">
+                <div class="row">
+                    <h1>Login</h1>
+                </div>
+                <div class="row">
+                    <mat-form-field>
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email" type="email" placeholder="Email">
+                        <mat-error>
+                            <ng-container *ngIf="email?.errors?.['required']">Email is required!</ng-container>
+                            <ng-container *ngIf="email?.errors?.['email']">This is not a valid Email!</ng-container>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="row">
+                    <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input matInput formControlName="password" type="password">
+                        <mat-error *ngIf="password?.touched && password?.invalid">
+                            <ng-container *ngIf="password?.errors?.['required']">Password is
+                                required!<br></ng-container>
+                            <ng-container *ngIf="password?.errors?.['minlength']">At least 8
+                                characters<br></ng-container>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="row">
+                    <button mat-button (click)="onLogin()" [disabled]="!loginForm.valid">Login</button>
+                    <button mat-button [routerLink]="'/register'">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

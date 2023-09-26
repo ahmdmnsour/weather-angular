@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <span>Weather</span>
+
+        <span class="example-spacer"></span>
+        <button mat-button [routerLink]="['/my-notes']">My notes</button>
+        <button mat-button [routerLink]="['/settings']">Settings</button>
+        <button mat-button (click)="logout()" [routerLink]="['/login']">Logout</button>
+    </mat-toolbar-row>
+</mat-toolbar>

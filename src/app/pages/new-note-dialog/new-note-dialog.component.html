@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Add note</h1>
+
+<div mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Note</mat-label>
+        <input matInput type="text" placeholder="ex. Be careful" [(ngModel)]="note">
+    </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="">Cancel</button>
+    <button mat-button (click)="onSubmit()" [disabled]="note == ''">Submit</button>
+</div>

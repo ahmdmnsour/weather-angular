@@ -1,0 +1,55 @@
+<h1 mat-dialog-title>Create new admin</h1>
+
+<div mat-dialog-content>
+    <form [formGroup]="signupForm">
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" type="text" placeholder="Ex. Joe">
+                <mat-error *ngIf="name?.touched && name?.invalid">
+                    <ng-container *ngIf="name?.errors?.['required']">Name is required!<br></ng-container>
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" type="email" placeholder="Email">
+                <mat-error>
+                    <ng-container *ngIf="email?.errors?.['required']">Email is required!</ng-container>
+                    <ng-container *ngIf="email?.errors?.['email']">This is not a valid Email!</ng-container>
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password" type="password">
+                <mat-error *ngIf="password?.touched && password?.invalid">
+                    <ng-container *ngIf="password?.errors?.['required']">Password is required!<br></ng-container>
+                    <ng-container *ngIf="password?.errors?.['minlength']">At least 8 characters<br></ng-container>
+                    <ng-container *ngIf="password?.errors?.['shouldHaveUpper']">At least one capital
+                        character<br></ng-container>
+                    <ng-container *ngIf="password?.errors?.['shouldHaveNum']">At least one special
+                        character<br></ng-container>
+                    <ng-container *ngIf="password?.errors?.['shouldHaveSpecial']">At least one number</ng-container>
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Confirm password</mat-label>
+                <input matInput formControlName="passowrdConfirmation" type="password">
+                <mat-error *ngIf="passowrdConfirmation?.hasError('mismatch')">Password doesn't match</mat-error>
+            </mat-form-field>
+        </div>
+    </form>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="">Cancel</button>
+    <button mat-button (click)="onSubmit()" [disabled]="!signupForm.valid">Submit</button>
+</div>

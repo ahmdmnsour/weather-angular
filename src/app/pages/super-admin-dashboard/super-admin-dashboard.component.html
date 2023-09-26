@@ -1,0 +1,10 @@
+<app-toolbar-super-admin></app-toolbar-super-admin>
+
+<button class="btn btn-primary" (click)="openNewAdminDialog()">Create admin</button>
+
+<ul class="list-group">
+  <li *ngFor="let admin of admins" class="list-group-item d-flex justify-content-between align-items-center">
+    {{ admin.name }} ({{ admin.email }})
+    <button class="btn btn-danger" (click)="deleteAdmin(admin)">Delete</button>
+  </li>
+</ul>

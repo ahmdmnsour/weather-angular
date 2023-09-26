@@ -1,0 +1,21 @@
+<app-toolbar-user *ngIf="role == 'ROLE_USER'"></app-toolbar-user>
+<app-toolbar-admin *ngIf="role == 'ROLE_ADMIN'"></app-toolbar-admin>
+<app-toolbar-super-admin *ngIf="role == 'ROLE_SUPER_ADMIN'"></app-toolbar-super-admin>
+
+<div class="list-group">
+    <app-info-item
+        [attribute]="'Name'"
+        [value]="name"
+        [editable]="true">
+    </app-info-item>
+    <app-info-item
+        [attribute]="'Email'"
+        [value]="email">
+        [editable]="false"
+    </app-info-item>
+    <app-info-item
+        [attribute]="'Password'"
+        [isPassword]="true"
+        [editable]="true">
+    </app-info-item>
+</div>

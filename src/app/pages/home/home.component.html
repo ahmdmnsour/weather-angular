@@ -1,0 +1,29 @@
+<app-toolbar-user></app-toolbar-user>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Enter city" [(ngModel)]="cityName">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" (click)="searchWeather()">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <img [src]="weatherIcon" alt="Weather Icon">
+            <span>{{ temp }}°{{ unit }}</span>
+            <button class="btn btn-secondary" (click)="toggleUnit()">{{ unitToggleText }}</button>
+
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Note</h2>
+            <p>{{note}}</p>
+        </div>
+
+    </div>
+</div>
