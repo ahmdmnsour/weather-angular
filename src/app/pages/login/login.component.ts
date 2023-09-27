@@ -12,6 +12,8 @@ export class LoginComponent {
   userData = {};
   resp: any = {};
 
+  wrongCredentials: boolean = false;
+
   constructor(private authService: AuthService, private router: Router) { }
 
 
@@ -51,7 +53,7 @@ export class LoginComponent {
           this.router.navigate(['my-notes']);
       }, err => {
         if (err.status == 401) {
-          alert('Invalid email or password');
+          this.wrongCredentials = true;
         }
       });
   }

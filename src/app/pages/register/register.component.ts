@@ -13,6 +13,8 @@ export class RegisterComponent {
   userData = {};
   resp: any = {}
 
+  alreadyExists: boolean = false;
+
   constructor(private authService: AuthService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -51,7 +53,10 @@ export class RegisterComponent {
         localStorage.setItem('token', this.resp['token']);
         this.router.navigate(['home']);
       }, err => {
-        alert(err.error.message);
+        console.log(err);
+        if (err.status == 400) {
+          this.alreadyExists = true;
+        }
       });
 
     

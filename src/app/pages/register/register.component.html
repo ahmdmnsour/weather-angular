@@ -49,6 +49,8 @@
                     </mat-form-field>
                 </div>
 
+                <mat-error *ngIf="alreadyExists">Email already exists</mat-error>
+
                 <div class="row">
                     <button mat-button (click)="onSubmit()" [disabled]="!signupForm.valid">Submit</button>
                 </div>

@@ -29,6 +29,8 @@
                     </mat-form-field>
                 </div>
 
+                <mat-error *ngIf="wrongCredentials">Wrong credentials</mat-error>
+
                 <div class="row">
                     <button mat-button (click)="onLogin()" [disabled]="!loginForm.valid">Login</button>
                     <button mat-button [routerLink]="'/register'">Register</button>

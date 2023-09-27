@@ -15,7 +15,7 @@ export class HomeComponent {
   tempC: number | undefined;
   tempF: number | undefined;
   temp: number | undefined;
-  note: string = '';
+  notes: any = [];
   condition: string | undefined;
   unit: string = 'C';
   weatherIcon: string | undefined;
@@ -51,7 +51,7 @@ export class HomeComponent {
         this.tempC = this.weatherData['current']['temp_c'];
         this.tempF = this.weatherData['current']['temp_f'];
         this.weatherIcon = this.weatherData['current']['condition']['icon'];
-        this.note = this.weatherData.note;
+        this.notes = this.weatherData.notes;
         this.temp = this.tempC;
       }, err => {
         console.log(err);

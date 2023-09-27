@@ -2,10 +2,9 @@ import { ValidationErrors } from '@angular/forms';
 
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { CustomValidators } from '../register/custom.validators';
 import { ApiService } from 'src/app/services/api/api.service';
-import { MatDialog, MatDialogClose, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-new-admin-dialog',
@@ -14,6 +13,8 @@ import { MatDialog, MatDialogClose, MatDialogRef } from '@angular/material/dialo
 })
 export class NewAdminDialogComponent {
   adminData = {};
+
+  alreadyExists: boolean = false;
 
   constructor(private service: ApiService, private dialogRef: MatDialogRef<NewAdminDialogComponent>) { }
 
@@ -47,6 +48,11 @@ export class NewAdminDialogComponent {
         console.log(res);
         this.dialogRef.close(res);
 
+      }, err => {
+        console.log(err);
+        if (err.status == 400) {
+          this.alreadyExists = true;
+        }
       });
   }
 

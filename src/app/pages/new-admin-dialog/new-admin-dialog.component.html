@@ -46,6 +46,7 @@
                 <mat-error *ngIf="passowrdConfirmation?.hasError('mismatch')">Password doesn't match</mat-error>
             </mat-form-field>
         </div>
+        <mat-error *ngIf="alreadyExists">Email already exists</mat-error>
     </form>
 </div>
 
